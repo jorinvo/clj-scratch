@@ -1,1 +1,3 @@
-{:deps {com.bhauman/rebel-readline {:mvn/version "0.1.4"}}}
+{:deps {com.bhauman/rebel-readline {:mvn/version "0.1.4"}
+        http-kit {:mvn/version "2.3.0"}
+        metosin/jsonista {:mvn/version "0.2.2"}}}
