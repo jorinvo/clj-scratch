@@ -22,7 +22,7 @@
     [scratch.system :refer [username home pwd os]]
     [scratch.java :refer [jmethods]]
     [scratch.json :as json]
-    [scratch.http :refer [valid-port? valid-url? query-string hostname]]
+    [scratch.net :refer [valid-port? valid-url? query-string hostname ping nslookup]]
     [scratch.fs :refer [ls dir? exists?]]))
 
 (defn now []
