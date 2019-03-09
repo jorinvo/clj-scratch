@@ -3,6 +3,8 @@
     [rebel-readline.core]
     [rebel-readline.clojure.main]
     [rebel-readline.clojure.line-reader]
+    [rebel-readline.clojure.service.local]
+    [cider-nrepl.main :as cider]
     [clojure.repl :refer [apropos dir doc source]]
     [clojure.reflect :refer [reflect]]
     [clojure.java.io :as io]
@@ -17,14 +19,18 @@
     [org.httpkit.server :refer [run-server]]
     [org.httpkit.timer :as timer]
     [org.httpkit.encode :refer [base64-encode]]
-    [scratch.system :refer :all]
-    [scratch.java :refer :all]
+    [scratch.system :refer [username home pwd os]]
+    [scratch.java :refer [jmethods]]
     [scratch.json :as json]
-    [scratch.http :refer :all]
-    [scratch.fs :refer :all]   [rebel-readline.clojure.service.local]))
+    [scratch.http :refer [valid-port? valid-url? query-string hostname]]
+    [scratch.fs :refer [ls dir? exists?]]))
+
+(defn now []
+  (.getTime (java.util.Date.)))
 
 (defn -main []
   (in-ns 'scratch)
+  (doto (Thread. #(cider/init)) (.setDaemon true) .start)
   (rebel-readline.core/with-line-reader
     (rebel-readline.clojure.line-reader/create
       (rebel-readline.clojure.service.local/create))

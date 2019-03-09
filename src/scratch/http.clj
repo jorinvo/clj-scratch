@@ -22,6 +22,3 @@
 
 (defn hostname [s]
   (.getHost (new URI s)))
-
-(defn now []
-  (.getTime (java.util.Date.)))
