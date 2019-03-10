@@ -1,8 +1,7 @@
 (ns scratch.net
   (:import (java.net URI InetAddress Inet4Address Inet6Address))
   (:require
-   [clojure.string :as str]
-   [org.httpkit.client :refer [url-encode]]))
+   [clojure.string :as str]))
 
 (defn valid-port? [p]
   (< 0 p 0x10000))
@@ -12,13 +11,6 @@
     (.toURL (java.net.URI. s))
     true
     (catch Exception e false)))
-
-(defn query-string
-  "Returns URL-encoded query string for given params map."
-  [m]
-  (->> m
-       (map (fn [[k v]]  (str (url-encode (name k)) "=" (url-encode v))))
-       (str/join "&")))
 
 (defn hostname [s]
   (.getHost (new URI s)))
