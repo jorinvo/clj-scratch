@@ -15,6 +15,14 @@
 (defn hostname [s]
   (.getHost (new URI s)))
 
+; Thanks https://gist.github.com/apeckham/78da0a59076a4b91b1f5acf40a96de69
+(defn get-free-port
+  "Let Java find a free port for you."
+  []
+  (let [socket (java.net.ServerSocket. 0)]
+    (.close socket)
+    (.getLocalPort socket)))
+
 ; Thanks to https://github.com/clojure-cookbook/clojure-cookbook/blob/master/05_network-io/5-03_sending-a-ping-request.asciidoc
 (defn ping
   "Time an .isReachable ping to a given domain"

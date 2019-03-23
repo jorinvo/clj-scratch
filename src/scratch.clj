@@ -35,7 +35,7 @@
     [scratch.system :refer [username home pwd os]]
     [scratch.java :refer [jmethods]]
     [scratch.json :as json]
-    [scratch.net :refer [valid-port? valid-url? hostname ping nslookup]]
+    [scratch.net :refer [valid-port? valid-url? get-free-port hostname ping nslookup]]
     [scratch.fs :refer [ls dir? exists?]]))
 
 (defn -main []
