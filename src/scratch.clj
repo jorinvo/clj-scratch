@@ -16,6 +16,7 @@
     [rebel-readline.clojure.line-reader]
     [rebel-readline.clojure.service.local]
     [cider-nrepl.main :as cider]
+    [com.rpl.specter :as specter]
     [aleph.http :as http]
     [aleph.tcp :as tcp]
     [aleph.udp :as udp]
