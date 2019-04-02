@@ -16,29 +16,37 @@ You need to load some additional libraries depending on your context.
 `scratch` is an opinionated toolbox to have everything ready
 whenever I realize my shell commands are getting out of hand again.
 
+Of course loading all these dependencies comes at a cost,
+however not being interrupted while working on a problem is can be a good trait-off,
+especially if you keep the same REPL session running for most of the time anyways.
 
 ## Run It
 
 Run with:
 
-```
-clojure -Sdeps "{:deps {clj-scratch {:local/root \"/path/to/clj-scratch\"}}}" -m scratch
+```sh
+clojure -Sdeps '{:deps {clj-scratch {:local/root "/path/to/clj-scratch"}}}' -m scratch
 ```
 
 Or create an alias like:
 
-```
+```sh
 alias scratch='clojure -Sdeps "{:deps {clj-scratch {:local/root \"/path/to/clj-scratch\"}}}" -m scratch'
 ```
 
-*(I prefer using a local copy of the repository so I can easily adopt changes as I go)*
+I prefer using a local copy of the repository so I can easily adopt changes as I go,
+but a Git hash can be used to simply try out the REPL without downloading anything manually:
+
+```sh
+clojure -Sdeps '{:deps {clj-scratch {:git/url "https://github.com/jorinvo/clj-scratch" :sha "33bc24b92a56e614dfb954e678abbcb5188e32f8"}}}' -m scratch
+```
 
 
 ## Features
 
 ### Dev Tools
 
-- Use [rebel-readline](https://github.com/bhauman/rebel-readline) with all it's nice tools and shortcuts
+- Use [rebel-readline](https://github.com/bhauman/rebel-readline) with all its nice tools and shortcuts
 - Pretty printed REPL output
 - [CIDER nREPL](https://github.com/clojure-emacs/cider-nrepl) server to connect from your editor
 - View docs with [`(doc map)`](https://clojuredocs.org/clojure.repl/doc)
@@ -50,7 +58,7 @@ alias scratch='clojure -Sdeps "{:deps {clj-scratch {:local/root \"/path/to/clj-s
 
 ### OS
 
-- Info About Operating System in vars `username`, `home`, `pwd`,`os`
+- Info About Operating System in vars `username`, `home`, `pwd`, `os`
 - Run shell commands using `(sh "cowsay" "hi")`
 
 ### File System
@@ -81,7 +89,9 @@ There are aliases for `http`, `tcp`, `udp`, `byte-streams`, `stream` and `deferr
 
 Example - Make a HTTP requests:
 
-`(-> @(http/get "https://example.com") :body byte-streams/to-string)`
+```clojure
+(-> @(http/get "https://example.com") :body byte-streams/to-string)
+```
 
 Checkout [Aleph](https://github.com/ztellman/aleph) for more.
 
