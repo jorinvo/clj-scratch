@@ -22,23 +22,19 @@ especially if you keep the same REPL session running for most of the time anyway
 
 ## Run It
 
-Run with:
-
-```sh
-clojure -Sdeps '{:deps {clj-scratch {:local/root "/path/to/clj-scratch"}}}' -m scratch
-```
-
-Or create an alias like:
-
-```sh
-alias scratch='clojure -Sdeps "{:deps {clj-scratch {:local/root \"/path/to/clj-scratch\"}}}" -m scratch'
-```
-
-I prefer using a local copy of the repository so I can easily adopt changes as I go,
-but a Git hash can be used to simply try out the REPL without downloading anything manually:
+Try it out with:
 
 ```sh
 clojure -Sdeps '{:deps {clj-scratch {:git/url "https://github.com/jorinvo/clj-scratch" :sha "33bc24b92a56e614dfb954e678abbcb5188e32f8"}}}' -m scratch
+```
+
+A Git hash can be used to simply try out the REPL without downloading anything manually,
+but I prefer using a local copy of the repository so I can easily adopt changes as I go.
+
+I created an alias like this:
+
+```sh
+alias scratch='clojure -Sdeps "{:deps {clj-scratch {:local/root \"/path/to/clj-scratch\"}}}" -m scratch'
 ```
 
 
