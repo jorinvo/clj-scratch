@@ -2,12 +2,11 @@
 
 *Clojure REPL with features loaded ready to be productive*
 
-Being able to explore a problem with programming tools in an interactive fashion
-can be very productive.
+Being able to explore a problem with programming tools in an interactive fashion can be very productive.
 
-However, there have been countless times where I had to do some one-off investigating
-and a wrote a quick shell one-liner that grew into a monster of ten pipes with five sub-shells,
-three `xargs` and quoted quotes without quoted quotes.
+There have been countless times I had to do some one-off investigating
+and a wrote a quick shell one-liner that grew into a monster of ten pipes
+with five sub-shells, three `xargs` and quoted quotes within quoted quotes.
 
 Clojure is an amazing tool for interactive tasks, but just starting up a plain REPL,
 it's hard to be productive right away for one-off tasks.
