@@ -16,8 +16,9 @@ You need to load some additional libraries depending on your context.
 whenever I realize my shell commands are getting out of hand again.
 
 Of course loading all these dependencies comes at a cost,
-however not being interrupted while working on a problem is can be a good trait-off,
+however not being interrupted while working on a problem can be a good trait-off,
 especially if you keep the same REPL session running for most of the time anyways.
+The most common tools are required by default and the other dependencies can be loaded on demand.
 
 ## Run It
 
@@ -80,7 +81,16 @@ alias scratch='clojure -Sdeps "{:deps {clj-scratch {:local/root \"/path/to/clj-s
 
 Aleph provides great tooling to work with HTTP, WebSockets, TCP and UDP as client and server.
 
-There are aliases for `http`, `tcp`, `udp`, `byte-streams`, `stream` and `deferred`.
+It's included as dependency but not loaded by default:
+
+```clojure
+(require '[aleph.http :as http])
+(require '[aleph.tcp :as tcp])
+(require '[aleph.udp :as udp])
+(require '[byte-streams :as byte-streams])
+(require '[manifold.stream :as stream])
+(require '[manifold.deferred :as deferred])
+```
 
 Example - Make a HTTP requests:
 
@@ -96,7 +106,13 @@ Checkout [Aleph](https://github.com/ztellman/aleph) for more.
 - Parse HTML with [tagsoup](https://github.com/nathell/clj-tagsoup)
 - Use [specter](https://github.com/nathanmarz/specter) to transform deeply nested structures (like HTML!)
 
+The tools are included as dependencies but not loaded by default:
+
 ```clojure
+(require '[hiccup.core :refer [html]])
+(require '[com.rpl.specter :as specter])
+(require '[pl.danieljanus.tagsoup :as tagsoup])
+
 (def data (tagsoup/parse "https://example.com"))
 
 (def CHILDREN (specter/nthpath 2))
@@ -113,17 +129,37 @@ Checkout [Aleph](https://github.com/ztellman/aleph) for more.
 
 ### SQL
 
-- [`jdbc`](https://github.com/clojure/java.jdbc) is already required
+- [`jdbc`](https://github.com/clojure/java.jdbc) is available
+- Make sure to require it first:
+
+```clojure
+(require '[clojure.java.jdbc :as jdbc])
+```
+
 - SQLite, PostgreSQL and MySQL drivers are included
 
 ### Working with time
 
-- [java-time](https://github.com/dm3/clojure.java-time) is available as `time`
+- Using [java-time](https://github.com/dm3/clojure.java-time)
+
+```clojure
+(require '[java-time :as time])
+```
+
 - There are excellent examples [here](https://github.com/dm3/clojure.java-time#an-appetizer)
 
 ### Cryptography
 
 - [buddy](https://github.com/funcool/buddy-core) is included to provide crypto functionality
+
+```clojure
+(require '[buddy.core.hash :as hash])
+(require '[buddy.core.mac :as mac])
+(require '[buddy.core.codecs :as codecs])
+(require '[buddy.core.codecs.base64 :as base64])
+(require '[buddy.hashers :as hashers])
+```
+
 - Common namespaces are available: `hash`, `mac`, `codecs`, `base64`` hashers`
 - sha hash: `(-> (hash/sha256 "some val") (codecs/bytes->hex))`
 - base64 string: `(codecs/bytes->str (base64/encode "some val"))`
@@ -133,6 +169,8 @@ Checkout [Aleph](https://github.com/ztellman/aleph) for more.
 Send mail with [Postal](https://github.com/drewr/postal):
 
 ```clojure
+(require '[postal.core :as postal])
+
 (postal/send-message {:host "mail.example.com"
                       :user "abc"
                       :pass "123"}
