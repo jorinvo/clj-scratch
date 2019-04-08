@@ -25,7 +25,7 @@ The most common tools are required by default and the other dependencies can be 
 Try it out with:
 
 ```sh
-clojure -Sdeps '{:deps {clj-scratch {:git/url "https://github.com/jorinvo/clj-scratch" :sha "33bc24b92a56e614dfb954e678abbcb5188e32f8"}}}' -m scratch
+clojure -Sdeps '{:deps {clj-scratch {:git/url "https://github.com/jorinvo/clj-scratch" :sha "c7dfa3e6f496e30d5ff39506fb893c5fc733081c"}}}' -m scratch
 ```
 
 A Git hash can be used to simply try out the REPL without downloading anything manually,
