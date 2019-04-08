@@ -4,6 +4,7 @@
     [clojure.java.io :as io]
     [clojure.java.shell :refer [sh]]
     [clojure.data :refer [diff]]
+    [clojure.edn :as edn]
     [clojure.pprint :refer [pp pprint print-table]]
     [clojure.set :as set]
     [clojure.spec.alpha :as spec]

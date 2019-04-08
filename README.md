@@ -84,12 +84,12 @@ Aleph provides great tooling to work with HTTP, WebSockets, TCP and UDP as clien
 It's included as dependency but not loaded by default:
 
 ```clojure
-(require '[aleph.http :as http])
-(require '[aleph.tcp :as tcp])
-(require '[aleph.udp :as udp])
-(require '[byte-streams :as byte-streams])
-(require '[manifold.stream :as stream])
-(require '[manifold.deferred :as deferred])
+(require '[aleph.http :as http]
+         '[aleph.tcp :as tcp]
+         '[aleph.udp :as udp]
+         '[byte-streams :as byte-streams]
+         '[manifold.stream :as stream]
+         '[manifold.deferred :as deferred])
 ```
 
 Example - Make a HTTP requests:
@@ -153,11 +153,11 @@ The tools are included as dependencies but not loaded by default:
 - [buddy](https://github.com/funcool/buddy-core) is included to provide crypto functionality
 
 ```clojure
-(require '[buddy.core.hash :as hash])
-(require '[buddy.core.mac :as mac])
-(require '[buddy.core.codecs :as codecs])
-(require '[buddy.core.codecs.base64 :as base64])
-(require '[buddy.hashers :as hashers])
+(require '[buddy.core.hash :as hash]
+         '[buddy.core.mac :as mac]
+         '[buddy.core.codecs :as codecs]
+         '[buddy.core.codecs.base64 :as base64]
+         '[buddy.hashers :as hashers])
 ```
 
 - Common namespaces are available: `hash`, `mac`, `codecs`, `base64`` hashers`
@@ -185,6 +185,7 @@ Send mail with [Postal](https://github.com/drewr/postal):
 Commonly used core namespaces are already available:
 
 ```clojure
+[clojure.edn :as edn]
 [clojure.data :refer [diff]]
 [clojure.set :as set]
 [clojure.string :as str]
