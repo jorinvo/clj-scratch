@@ -23,7 +23,7 @@
 
 (defn -main []
   (in-ns 'scratch)
-  (doto (Thread. #(cider/init)) (.setDaemon true) .start)
+  (doto (Thread. #(cider/init ['cider.nrepl/cider-middleware])) (.setDaemon true) .start)
   (rebel-readline.core/with-line-reader
     (rebel-readline.clojure.line-reader/create
       (rebel-readline.clojure.service.local/create))
