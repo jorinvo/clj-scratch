@@ -164,22 +164,6 @@ The tools are included as dependencies but not loaded by default:
 - sha hash: `(-> (hash/sha256 "some val") (codecs/bytes->hex))`
 - base64 string: `(codecs/bytes->str (base64/encode "some val"))`
 
-### Mail
-
-Send mail with [Postal](https://github.com/drewr/postal):
-
-```clojure
-(require '[postal.core :as postal])
-
-(postal/send-message {:host "mail.example.com"
-                      :user "abc"
-                      :pass "123"}
-                     {:from "hi@example.com"
-                      :to "self@example.com"
-                      :subject "Hi!"
-                      :body "Hello."})
-```
-
 ### More core data structures
 
 Commonly used core namespaces are already available:
